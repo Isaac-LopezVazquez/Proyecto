@@ -17,4 +17,11 @@ use App\Http\Controllers\PrendaController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/prenda', [PrendaController::class, 'index']);
+
+//Route::get('/index-prenda', [PrendaController::class, 'index']);
+//Route::get('/registro-prenda', [PrendaController::class, 'create']);  
+//Route::post('/registro-prenda', [PrendaController::class, 'store']); 
+//Route::get('/show/{id}?', [PrendaController::class, 'show']);
+
+Route::resource('prenda', PrendaController::class);
+

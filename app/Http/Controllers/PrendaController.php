@@ -14,10 +14,12 @@ class PrendaController extends Controller
     {
         //
         $prenda = Prenda::all();
-        return view('prenda.index-prenda', compact('prenda'));
+        return view('prenda.index-prenda', compact('prenda')); //vista con listado
 
 
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -25,6 +27,7 @@ class PrendaController extends Controller
     public function create()
     {
         //
+        return view('prenda.registro-prenda'); //form
     }
 
     /**
@@ -33,6 +36,24 @@ class PrendaController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'tipo'=>'required|min:4|max:255',
+            'color'=>'required|min:4|max:255',
+            'talla'=>'required|integer|max:40',
+            'costo'=>['required','integer','max:999'], 
+            
+        ]);
+
+        $prenda = new Prenda();
+        $prenda -> tipo = $request->tipo;
+        $prenda -> color = $request->color;
+        $prenda -> talla = $request->talla;
+        $prenda -> costo = $request->costo;
+        $prenda->save();
+
+        return redirect()->route('prenda.index'); //redireccion a form
+        
+
     }
 
     /**
@@ -41,6 +62,8 @@ class PrendaController extends Controller
     public function show(Prenda $prenda)
     {
         //
+        return view('prenda.show',compact('prenda'));
+
     }
 
     /**
@@ -49,6 +72,7 @@ class PrendaController extends Controller
     public function edit(Prenda $prenda)
     {
         //
+        return view('prenda.editar', compact('prenda'));
     }
 
     /**
@@ -57,6 +81,15 @@ class PrendaController extends Controller
     public function update(Request $request, Prenda $prenda)
     {
         //
+       
+        $prenda -> tipo = $request->tipo;
+        $prenda -> color = $request->color;
+        $prenda -> talla = $request->talla;
+        $prenda -> costo = $request->costo;
+        $prenda->save();
+        return redirect()->route('prenda.show', $prenda);
+        
+
     }
 
     /**

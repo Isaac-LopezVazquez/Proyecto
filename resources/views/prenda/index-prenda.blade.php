@@ -7,9 +7,13 @@
     <title>Proyecto</title>
 </head>
 <body>
-    <h1>Hola</h1>
+<a href="{{ route('prenda.create') }}">Registrar prenda</a>
+    <h1>Prendas registradas</h1>
     @foreach( $prenda as $p)
         <li> Tipo: {{ $p->tipo }} // Color: {{ $p->color }} // Talla: {{ $p->talla }} // Costo: {{ $p->costo }}</li>
+        <a href="/prenda/{{$p->id}}">Ver detalles</a>
+        <a href="/prenda/{{$p->id}}/edit"> Editar</a>
+
 
     @endforeach
 </body>
