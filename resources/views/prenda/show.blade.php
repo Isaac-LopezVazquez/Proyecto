@@ -11,4 +11,13 @@
     <li> Tipo: {{ $prenda->tipo }} // Color: {{ $prenda->color }} // Talla: {{ $prenda->talla }} // Costo: {{ $prenda->costo }}</li>
     <a href="{{ route('prenda.index') }}">Ver prendas registradas</a>
 </body>
+
+
+<form action="{{route('prenda.destroy',$prenda)}}" method='POST'>
+    <br>
+    @csrf
+    @method('DELETE')
+ <button type='submit'>borrar</button>
+
+</form>
 </html>

@@ -81,7 +81,13 @@ class PrendaController extends Controller
     public function update(Request $request, Prenda $prenda)
     {
         //
-       
+        $request->validate([
+            'tipo'=>'required|min:4|max:255',
+            'color'=>'required|min:4|max:255',
+            'talla'=>'required|integer|max:40',
+            'costo'=>['required','integer','max:999'], 
+            
+        ]);
         $prenda -> tipo = $request->tipo;
         $prenda -> color = $request->color;
         $prenda -> talla = $request->talla;
@@ -98,5 +104,7 @@ class PrendaController extends Controller
     public function destroy(Prenda $prenda)
     {
         //
+        $prenda->delete();
+        return redirect()->route('prenda.index');
     }
 }
