@@ -93,7 +93,8 @@ class PrendaController extends Controller
         $prenda -> talla = $request->talla;
         $prenda -> costo = $request->costo;
         $prenda->save();
-        return redirect()->route('prenda.show', $prenda);
+        return redirect()->route('prenda.index');
+       // return redirect()->route('prenda.show', $prenda);
         
 
     }
