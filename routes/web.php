@@ -23,7 +23,7 @@ Route::get('/', function () {
 //Route::post('/registro-prenda', [PrendaController::class, 'store']); 
 //Route::get('/show/{id}?', [PrendaController::class, 'show']);
 
-Route::resource('prenda', PrendaController::class);
+Route::resource('prenda', PrendaController::class)->middleware('auth'); //regresa a login
 
 
 Route::middleware([

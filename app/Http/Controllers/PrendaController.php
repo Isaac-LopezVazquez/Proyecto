@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prenda;
 use Illuminate\Http\Request;
 
+
 class PrendaController extends Controller
 {
     /**
@@ -44,12 +45,14 @@ class PrendaController extends Controller
             
         ]);
 
-        $prenda = new Prenda();
-        $prenda -> tipo = $request->tipo;
-        $prenda -> color = $request->color;
-        $prenda -> talla = $request->talla;
-        $prenda -> costo = $request->costo;
-        $prenda->save();
+       // $prenda = new Prenda();
+       // $prenda -> tipo = $request->tipo;
+       // $prenda -> color = $request->color;
+       // $prenda -> talla = $request->talla;
+       // $prenda -> costo = $request->costo;
+       // $prenda->save();
+
+       Prenda::create($request->all());
 
         return redirect()->route('prenda.index'); //redireccion a form
         
@@ -80,6 +83,7 @@ class PrendaController extends Controller
      */
     public function update(Request $request, Prenda $prenda)
     {
+        
         //
         $request->validate([
             'tipo'=>'required|min:4|max:255',
@@ -88,11 +92,13 @@ class PrendaController extends Controller
             'costo'=>['required','integer','max:999'], 
             
         ]);
-        $prenda -> tipo = $request->tipo;
-        $prenda -> color = $request->color;
-        $prenda -> talla = $request->talla;
-        $prenda -> costo = $request->costo;
-        $prenda->save();
+
+        Prenda::where('id', $prenda->id)->update($request->except('_token','_method'));
+      //  $prenda -> tipo = $request->tipo;
+     //   $prenda -> color = $request->color;
+      //  $prenda -> talla = $request->talla;
+       // $prenda -> costo = $request->costo;
+       // $prenda->save();
         return redirect()->route('prenda.index');
        // return redirect()->route('prenda.show', $prenda);
         

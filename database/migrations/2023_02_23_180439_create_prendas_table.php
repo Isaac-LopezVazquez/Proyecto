@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('color');
             $table->string('talla');
             $table->integer('costo');
+            $table->softDeletes();
            
 
 
-            $table->timestamps();
+           // $table->timestamps();
         });
     }
 
