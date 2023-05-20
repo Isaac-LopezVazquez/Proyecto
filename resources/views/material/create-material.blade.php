@@ -14,36 +14,36 @@
     <div class="container">
         <div class="row">
             <div class="card">
-                <h5>Agregar Material</h5>
                 <div class="card-body">
                     <form action="{{ route('material.store') }}" method="POST">
                         @csrf
                         <div class="container text-center">
                             <div class="row align-items-center">
+                            <h5 class="card-title fw-semibold">Agregar material</h5>
                                 <div class="col">
                                     <label for="tipoMaterial" class="form-label">Tipo de material</label>
-                                    <input type="text" class="form-control" id="" aria-describedby="TipoPrenda" name="tipoMaterial" value="{{ old('tipoMaterial') }}">
+                                    <input type="text" class="form-control" id="" aria-describedby="TipoPrenda" name="tipoMaterial" value="{{ old('tipoMaterial') }}" pattern="[A-Za-z ]+" required>
                                     @error('tipoMaterial')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="cantidadMaterial" class="form-label">Cantidad de materail</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="ColorPrenda" name="cantidadMaterial" value="{{ old('cantidadMaterial') }}">
+                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="ColorPrenda" name="cantidadMaterial" value="{{ old('cantidadMaterial') }}" required>
                                     @error('cantidadMaterial')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="costo" class="form-label">Costo por unidad</label>
-                                    <input type="number" class="form-control" id="" aria-describedby="TallaPrenda" name="costo" value="{{ old('costo') }}">
+                                    <input type="number" class="form-control" id="" aria-describedby="TallaPrenda" name="costo" value="{{ old('costo') }}" required>
                                     @error('costo')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="provedores" class="form-label">Proveedores</label>
-                                    <select name="provedor_id" class="form-select" aria-label="Default select example">
+                                    <select name="provedor_id" class="form-select" aria-label="Default select example" required>
                                         @foreach ($provedores as $provedor)
                                         <option value="{{$provedor->id}}">{{$provedor->nombreP}}</option>
                                         @endforeach
@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit">Enviar</button>
                     </form>
                 </div>
             </div>

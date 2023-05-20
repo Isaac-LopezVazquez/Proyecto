@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prenda;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 
 
@@ -20,6 +21,12 @@ class PrendaController extends Controller
 
     }
 
+    public function pdf()
+    {
+        
+
+    }
+
     
 
     /**
@@ -28,8 +35,9 @@ class PrendaController extends Controller
     public function create()
     {
         //
-        $this->authorize('create', Prenda::class);
-        return view('prenda.registro-prenda'); //form
+        $this->authorize('create', Prenda::class);//police
+        $empleado = Empleado::all();
+        return view('prenda.registro-prenda',compact('empleado')); //form
     }
 
     /**
@@ -69,6 +77,7 @@ class PrendaController extends Controller
     public function show(Prenda $prenda)
     {
         //
+
         return view('prenda.show',compact('prenda'));
 
     }

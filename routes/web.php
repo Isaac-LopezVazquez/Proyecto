@@ -1,36 +1,37 @@
 <?php
 
+use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProvedorController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/index-prenda', [PrendaController::class, 'index']);
-//Route::get('/registro-prenda', [PrendaController::class, 'create']);  
-//Route::post('/registro-prenda', [PrendaController::class, 'store']); 
-//Route::get('/show/{id}?', [PrendaController::class, 'show']);
+//Route::get('prenda', [PrendaController::class, 'index']);
+//Route::get('ingresa', [PrendaController::class, 'create']);
+//Route::post('ingresa', [PrendaController::class, 'store']);
+//Route::get('/prenda-individual/{id?}', [PrendaController::class, 'show']);
 
-Route::resource('prenda', PrendaController::class)->middleware('auth'); //regresa a login
+
+Route::resource('prenda', PrendaController::class)->middleware('auth');//El Middleware sirve para que estes si o si iniciado sesion para que te deje entrar a la ruta en la que quieras hacer
+
+Route::post('material/{material}/agrega-prenda/', [MaterialController::class, 'agregaPrenda'])->name('material.agrega-prenda')->middleware('auth');
 Route::resource('material', MaterialController::class)->middleware('auth');
+
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 
 Route::resource('provedor', ProvedorController::class)->middleware('auth');
+
+//Route::resource('prenda', PrendaController::class)->except(['destroy', 'index']); Crea una ruta para cada metodo y el except las evita  
+
+Route::get('/inicio', function () {
+    return view('inicio');
+})->name('inicio');
 
 Route::middleware([
     'auth:sanctum',
@@ -46,3 +47,8 @@ Route::get('archivo/descarga/{archivo}',  //ruta archivo
     ->name('archivo.descargar');
 
 Route::resource('archivo',ArchivoController::class)->middleware('auth');
+
+///google
+Route::get('auth/google',[GoogleAuthController::class, 'AuthRedirect'])->name('login-google');
+Route::get('auth/google/call-back',[GoogleAuthController::class, 'googleCallback']);
+

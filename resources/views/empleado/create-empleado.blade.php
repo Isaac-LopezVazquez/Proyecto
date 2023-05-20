@@ -14,29 +14,29 @@
     <div class="container">
         <div class="row">
             <div class="card">
-                <h5>Agregar Empleado</h5>
                 <div class="card-body">
                     <form action="{{ route('empleado.store') }}" method="POST">
                         @csrf
                         <div class="container text-center">
+                            <h5 class="card-title fw-semibold">Agregar empleado</h5>
                             <div class="row align-items-center">
                                 <div class="col">
                                     <label for="nombre" class="form-label">Nombre(s)</label>
-                                    <input type="text" class="form-control" id="" aria-describedby="nombre" name="nombre" value="{{ old('nombre') }}">
+                                    <input type="text" class="form-control" id="" aria-describedby="nombre" name="nombre" value="{{ old('nombre') }}" pattern="[A-Za-z ]+" required>
                                     @error('nombre')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="apellidoP" class="form-label">Apellido Paterno</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="ApellidoPaterno" name="apellidoP" value="{{ old('apellidoP') }}">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="ApellidoPaterno" name="apellidoP" value="{{ old('apellidoP') }}" pattern="[A-Za-z ]+" required>
                                     @error('apellidoP')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="apellidoM" class="form-label">Apellido Materno</label>
-                                    <input type="text" class="form-control" id="" aria-describedby="ApellidoMaterno" name="apellidoM" value="{{ old('apellidoM') }}">
+                                    <input type="text" class="form-control" id="" aria-describedby="ApellidoMaterno" name="apellidoM" value="{{ old('apellidoM') }}" pattern="[A-Za-z ]+" required>
                                     @error('apellidoM')
                                     <h4>{{ $message }}</h4>
                                     @enderror
@@ -45,21 +45,21 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <label for="telefono" class="form-label">Telefono</label>
-                                    <input type="number" class="form-control" id="" aria-describedby="Telefono" name="telefono" value="{{ old('telefono') }}">
+                                    <input type="number" class="form-control" id="" aria-describedby="Telefono" name="telefono" value="{{ old('telefono') }}" required>
                                     @error('telefono')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="salario" class="form-label">Salario</label>
-                                    <input type="number" class="form-control" id="" aria-describedby="Salario" name="salario" value="{{ old('salario') }}">
+                                    <input type="number" class="form-control" id="" aria-describedby="Salario" name="salario" value="{{ old('salario') }}" required>
                                     @error('salario')
                                     <h4>{{ $message }}</h4>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="rfc" class="form-label">RFC</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="RFC" name="rfc" value="{{ old('rfc') }}">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="RFC" name="rfc" value="{{ old('rfc') }}" required>
                                     @error('rfc')
                                     <h4>{{ $message }}</h4>
                                     @enderror
@@ -67,7 +67,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit">Enviar</button>
                     </form>
                 </div>
             </div>

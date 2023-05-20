@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css_plantilla/styles.min.css') }}">
-    <title>Agregar Provedor</title>
+    <title>Editar Provedor</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
                         <div class="row justify-content-evenly">
                             <div class="col-4">
                                 <label for="nombreP" class="form-label">Nombre Provedor</label>
-                                <input type="text" class="form-control" id="" aria-describedby="NombreProvedor" name="nombreP" value="{{ old('nombreP') ?? $provedor->nombreP }}">
+                                <input type="text" class="form-control" id="" aria-describedby="NombreProvedor" name="nombreP" value="{{ old('nombreP') ?? $provedor->nombreP }}" pattern="[A-Za-z ]+" >
                                 @error('nombreP')
                                 <h4>{{ $message }}</h4>
                                 @enderror
@@ -42,7 +42,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit">Enviar</button>
                     </form>
                 </div>
             </div>

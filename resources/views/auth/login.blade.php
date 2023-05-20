@@ -42,6 +42,12 @@
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
+
+                <div class="flex items-center justify-center mt-4">
+            <a href="{{ route('login-google') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
+              Login With Google
+            </a>
+        </div>
             </div>
         </form>
     </x-authentication-card>

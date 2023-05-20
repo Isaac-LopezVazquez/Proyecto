@@ -37,23 +37,25 @@
                                 <tbody>
                                     <tr>
                                         <td class="border-bottom-0">
+
                                             <h6 class="fw-semibold mb-0">{{ $e->nombre }} {{ $e->apellidoP }} {{ $e->apellidoM }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $e->telefono }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4"><a href="{{ route('empleado.show', $e) }}">VER</a></h6>
+                                            <h6 class="fw-semibold mb-0 fs-4"><a href="{{ route('empleado.edit', $e) }}">Editar</a></h6>
                                             <h6 class="fw-semibold mb-0 fs-4">
-                                                <a href="#editEmployeeModal{{$e->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                <form action="{{ route('empleado.destroy', $e) }}" method="POST" class='formulario-eliminar'>
+                                                <form action="{{ route('empleado.destroy', $e) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" onclick="mostrarConfirmacion(this)">Eliminar</button>
+                                                    <button type="submit"> Eliminar</button>
                                                 </form>
-                                                <a href="{{ route('empleado.edit', $e) }}">VER</a>
                                             </h6>
                                         </td>
                                     </tr>
+
                                 </tbody>
                                 @endforeach
                             </table>
@@ -63,7 +65,6 @@
             </div>
         </div>
     </div>
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     @if(session('empleado') == 'eliminado' || session('success')) 

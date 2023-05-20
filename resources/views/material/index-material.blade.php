@@ -57,14 +57,14 @@
                                             <h6 class="fw-semibold mb-0">{{ $m->provedor->nombreP }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4"><a href="{{ route('material.show', $m) }}">Ver</a></h6>
+                                            <h6 class="fw-semibold mb-0 fs-4"><a href="{{ route('material.edit', $m) }}">Editar</a></h6>
                                             <h6 class="fw-semibold mb-0 fs-4">
-                                                <a href="#editEmployeeModal{{$m->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                <form action="{{ route('material.destroy', $m) }}" method="POST">
+                                                <form action="{{ route('material.destroy', $m) }}" method="POST" onsubmit="mostrarConfirmacion(event)">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" onclick="mostrarConfirmacion(event)">Eliminar</button>
+                                                    <button type="submit">Eliminar</button>
                                                 </form>
-                                                <a href="{{ route('material.edit', $m) }}">VER</a>
                                             </h6>
                                         </td>
                                     </tr>
@@ -78,24 +78,19 @@
         </div>
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-    @if(session('material') == 'eliminado' || session('success')) 
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: '¡Éxito!',
-            text: '{{ session('material') == 'eliminado' ? 'El empleado ha sido eliminado.' : session('success') }}', // evalua editar, crear, eliminar
-            timer: 3000 // Duración de la notificación en milisegundos (3 segundos en este caso)
-        });
-    </script>
-    @endif          
-
+    <script src="{{ asset('/js_plantilla/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('/js_plantilla/app.min.js') }}"></script>
+    <script src="{{ asset('/js_plantilla/dashboard.js') }}"></script>
+    <script src="{{ asset('/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('/libs/simplebar/dist/simplebar.js') }}"></script>
     <script>
         function mostrarConfirmacion(event) {
             event.preventDefault();
             Swal.fire({
                 title: '¿Estás seguro?',
-                text: "Esta acción no se puede deshacer.",
+                text: 'Esta acción no se puede deshacer.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -104,20 +99,22 @@
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var form = event.target.parentNode;
+                    var form = event.target;
                     form.submit();
                 }
             });
         }
     </script>
-
-    <script src="{{ asset('/js_plantilla/sidebarmenu.js') }}"></script>
-    <script src="{{ asset('/js_plantilla/app.min.js') }}"></script>
-    <script src="{{ asset('/js_plantilla/dashboard.js') }}"></script>
-    <script src="{{ asset('/libs/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('/libs/simplebar/dist/simplebar.js') }}"></script>
+    @if(session('material') == 'eliminado' || session('success')) 
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: '{{ session('material') == 'eliminado' ? 'El empleado ha sido eliminado.' : session('success') }}',
+            timer: 3000
+        });
+    </script>
+    @endif
 </body>
 
 </html>

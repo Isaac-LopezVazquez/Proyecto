@@ -7,13 +7,35 @@
         <!--  Header Start -->
         <header class="app-header">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <ul class="navbar-nav">
-                    <li class="nav-item d-block d-xl-none">
-                        <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                            <i class="ti ti-menu-2"></i>
-                        </a>
-                    </li>
-                </ul>
+                <!--  Poner la navegacion -->
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/inicio"><img src="{{ asset('/img_plantilla/logos/BlackBox.jpeg') }}" alt="" width="50px"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('prenda.index') }}">Prendas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('material.index') }}">Materiales</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('provedor.index') }}">Proveedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('empleado.index') }}">Empleados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('archivo.index') }}">Archivo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                         <li class="nav-item dropdown">
@@ -23,12 +45,8 @@
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
                                     <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 dropdown-item">
-                                        
-                                        <p class="mb-0 fs-3">My Profile</p>
-                                    </a>
-                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                        
-                                        <p class="mb-0 fs-3">My Account</p>
+
+                                        <p class="mb-0 fs-3">Mi perfil</p>
                                     </a>
                                     <form method="POST" action="{{ route('logout') }}" x-data>
                                         @csrf

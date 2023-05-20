@@ -11,40 +11,43 @@
 
 <body>
     <x-layout />
-    <div class="row">
-        <div class="card">
-            <h5>Agregar Provedor</h5>
-            <div class="card-body">
-                <form action="{{ route('provedor.store') }}" method="POST">
-                    @csrf
-                    <div class="row justify-content-evenly">
-                        <div class="col-4">
-                            <label for="nombreP" class="form-label">Nombre Provedor</label>
-                            <input type="text" class="form-control" id="" aria-describedby="NombreProvedor" name="nombreP" value="{{ old('nombreP') }}">
-                            @error('nombreP')
-                            <h4>{{ $message }}</h4>
-                            @enderror
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('provedor.store') }}" method="POST">
+                        @csrf
+                        <div class="row justify-content-evenly">
+                        <h5 class="card-title fw-semibold">Agregar Prenda</h5>
+                            <div class="col-4">
+                                <label for="nombreP" class="form-label">Nombre Provedor</label>
+                                <input type="text" class="form-control" id="" aria-describedby="NombreProvedor" name="nombreP" value="{{ old('nombreP') }}" pattern="[A-Za-z ]+" required>
+                                @error('nombreP')
+                                <h4>{{ $message }}</h4>
+                                @enderror
+                            </div>
+                            <div class="col-4">
+                                <label for="direccion" class="form-label">Direccion del Provedor</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Direccion" name="direccion" value="{{ old('direccion') }}" required>
+                                @error('direccion')
+                                <h4>{{ $message }}</h4>
+                                @enderror
+                            </div>
+                            <div class="col-4">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="number" class="form-control" id="" aria-describedby="Telefono" name="telefono" value="{{ old('telefono') }}">
+                                @error('telefono')
+                                <h4>{{ $message }}</h4>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <label for="direccion" class="form-label">Direccion del Provedor</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Direccion" name="direccion" value="{{ old('direccion') }}">
-                            @error('direccion')
-                            <h4>{{ $message }}</h4>
-                            @enderror
-                        </div>
-                        <div class="col-4">
-                            <label for="telefono" class="form-label">Telefono</label>
-                            <input type="number" class="form-control" id="" aria-describedby="Telefono" name="telefono" value="{{ old('telefono') }}">
-                            @error('telefono')
-                            <h4>{{ $message }}</h4>
-                            @enderror
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 <script src="{{ asset('/js_plantilla/sidebarmenu.js') }}"></script>
 <script src="{{ asset('/js_plantilla/app.min.js') }}"></script>

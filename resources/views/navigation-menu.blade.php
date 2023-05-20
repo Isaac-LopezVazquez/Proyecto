@@ -15,15 +15,10 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('prenda.index') }}">
-                        {{ __('prenda') }}
+                    <x-nav-link href="/inicio" :active="request()->routeIs('dashboard')">
+                        {{ __('inicio-proyecto') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('material.index') }}">
-                        {{ __('Material') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('archivo.index') }}">
-                        {{ __('archivo') }}
-                    </x-nav-link>
+                   
                 </div>
             </div>
 
