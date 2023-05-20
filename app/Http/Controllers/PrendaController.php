@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prenda;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 
 class PrendaController extends Controller
@@ -21,12 +22,7 @@ class PrendaController extends Controller
 
     }
 
-    public function pdf()
-    {
-        
-
-    }
-
+   
     
 
     /**
