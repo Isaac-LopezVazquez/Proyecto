@@ -39,6 +39,8 @@ class ProvedorController extends Controller
             'direccion' => 'required|min:4|max:255',
             'telefono' => 'required|integer|max:15',
         ]);
+        
+        session()->flash('success', 'La prenda se ha creado exitosamente.');
 
         Provedor::create($request->all()); //Ingresa los datos a las columnas que esten definidas en los FILLABLE
 
@@ -79,6 +81,7 @@ class ProvedorController extends Controller
             'direccion' => 'required|min:4|max:255',
             'telefono' => 'required|integer|max:15',
         ]);
+        session()->flash('success', 'La prenda se ha actualizado exitosamente.');
 
         Provedor::where('id', $provedor->id)->update($request->except('_token', '_method'));
 
@@ -93,6 +96,6 @@ class ProvedorController extends Controller
     {
         //
         $provedor->delete();
-        return redirect()->route('provedor.index');
+        return redirect()->route('provedor.index')->with('prenda', 'eliminado');
     }
 }
