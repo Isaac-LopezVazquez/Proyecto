@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 use App\Models\Prenda;
+use App\Models\User;
 use App\Policies\PrendaPolicy;
 use App\Models\Team;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+		Gate::define('admin-empleados', function (User $user) {  //solo el id 1 puede agregar empleados
+			return $user->id === 1;
+		});
 
         //
     }

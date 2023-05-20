@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\Prenda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EmpleadoController extends Controller
 {
@@ -23,6 +24,9 @@ class EmpleadoController extends Controller
     public function create()
     {
         //
+        if (! Gate::allows('admin-empleados')) { //gate
+            abort(403);
+        }
         return view('empleado.create-empleado',);
     }
 
