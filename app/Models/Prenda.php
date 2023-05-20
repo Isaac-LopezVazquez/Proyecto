@@ -12,4 +12,10 @@ class Prenda extends Model
     use SoftDeletes;
     public $timestamps = false;
     protected $fillable = ['tipo','color','talla','costo'];
+   
+
+    public function materiales()
+    {
+        return $this->belongsToMany(Material::class);
+    }
 }

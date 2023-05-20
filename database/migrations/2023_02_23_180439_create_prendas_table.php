@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('talla');
             $table->integer('costo');
             $table->softDeletes();
-           
-
-
-           // $table->timestamps();
+           $table->timestamps();
         });
     }
 

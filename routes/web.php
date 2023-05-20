@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrendaController;
-
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProvedorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +27,10 @@ Route::get('/', function () {
 //Route::get('/show/{id}?', [PrendaController::class, 'show']);
 
 Route::resource('prenda', PrendaController::class)->middleware('auth'); //regresa a login
+Route::resource('material', MaterialController::class)->middleware('auth');
+Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 
+Route::resource('provedor', ProvedorController::class)->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',
@@ -35,3 +41,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('archivo/descarga/{archivo}',  //ruta archivo
+    [ArchivoController::class, 'descargar'])
+    ->name('archivo.descargar');
+
+Route::resource('archivo',ArchivoController::class)->middleware('auth');

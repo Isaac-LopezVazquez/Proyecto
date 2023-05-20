@@ -16,7 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('prenda.index') }}">
-                        {{ __('CRUD') }}
+                        {{ __('prenda') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('material.index') }}">
+                        {{ __('Material') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('archivo.index') }}">
+                        {{ __('archivo') }}
                     </x-nav-link>
                 </div>
             </div>

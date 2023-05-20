@@ -28,6 +28,7 @@ class PrendaController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', Prenda::class);
         return view('prenda.registro-prenda'); //form
     }
 
@@ -53,6 +54,9 @@ class PrendaController extends Controller
        // $prenda->save();
 
        Prenda::create($request->all());
+       session()->flash('success', 'La prenda se ha creado exitosamente.');
+
+
 
         return redirect()->route('prenda.index'); //redireccion a form
         
@@ -92,6 +96,7 @@ class PrendaController extends Controller
             'costo'=>['required','integer','max:999'], 
             
         ]);
+        session()->flash('success', 'La prenda se ha actualizado exitosamente.');
 
         Prenda::where('id', $prenda->id)->update($request->except('_token','_method'));
       //  $prenda -> tipo = $request->tipo;
@@ -112,6 +117,7 @@ class PrendaController extends Controller
     {
         //
         $prenda->delete();
-        return redirect()->route('prenda.index');
+        return redirect()->route('prenda.index')->with('prenda', 'eliminado');
+
     }
 }

@@ -26,7 +26,9 @@ class User extends Authenticatable implements MustVerifyEmail //Implementar corr
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password',  'avatar' ,
+        'external_id' ,
+        'external_auth' ,
     ];
 
     /**
@@ -58,4 +60,24 @@ class User extends Authenticatable implements MustVerifyEmail //Implementar corr
     protected $appends = [
         'profile_photo_url',
     ];
+
+	/**
+	 * The attributes that are mass assignable.
+	 * 
+	 * @return array<int, string>
+	 */
+	public function getFillable() {
+		return $this->fillable;
+	}
+	
+	/**
+	 * The attributes that are mass assignable.
+	 * 
+	 * @param array<int, string> $fillable The attributes that are mass assignable.
+	 * @return self
+	 */
+	public function setFillable($fillable): self {
+		$this->fillable = $fillable;
+		return $this;
+	}
 }
