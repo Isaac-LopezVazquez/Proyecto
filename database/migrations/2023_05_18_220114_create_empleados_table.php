@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('apellidoM');
             $table->integer('salario');
             $table->string('rfc');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -38,7 +38,7 @@ class EmpleadoController extends Controller
             'apellidoM' => 'required|min:4|max:255',
             'salario' => 'required|integer|max:50000',
             'rfc' => 'required|min:13|max:255',
-            'telefono' => 'required|integer|max:15'
+            'telefono' => 'required|integer|max:9999999999',
         ]);
         session()->flash('success', 'El empleado se ha registrado exitosamente.');
 
@@ -80,7 +80,7 @@ class EmpleadoController extends Controller
             'apellidoM' => 'required|min:4|max:255',
             'salario' => 'required|integer|max:50000',
             'rfc' => 'required|min:13|max:255',
-            'telefono' => 'required|integer|max:15'
+            'telefono' => 'required|integer|max:9999999999',
         ]);
         session()->flash('success', 'El empleado se ha actualizado exitosamente.');
 

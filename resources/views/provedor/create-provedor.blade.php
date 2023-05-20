@@ -18,7 +18,7 @@
                     <form action="{{ route('provedor.store') }}" method="POST">
                         @csrf
                         <div class="row justify-content-evenly">
-                        <h5 class="card-title fw-semibold">Agregar Prenda</h5>
+                        <h5 class="card-title fw-semibold">Agregar proveedor</h5>
                             <div class="col-4">
                                 <label for="nombreP" class="form-label">Nombre Provedor</label>
                                 <input type="text" class="form-control" id="" aria-describedby="NombreProvedor" name="nombreP" value="{{ old('nombreP') }}" pattern="[A-Za-z ]+" required>

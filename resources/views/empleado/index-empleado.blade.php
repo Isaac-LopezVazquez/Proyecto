@@ -37,7 +37,6 @@
                                 <tbody>
                                     <tr>
                                         <td class="border-bottom-0">
-
                                             <h6 class="fw-semibold mb-0">{{ $e->nombre }} {{ $e->apellidoP }} {{ $e->apellidoM }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
@@ -50,12 +49,11 @@
                                                 <form action="{{ route('empleado.destroy', $e) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"> Eliminar</button>
+                                                    <button type="button" onclick="mostrarConfirmacion(this)">Eliminar</button>
                                                 </form>
                                             </h6>
                                         </td>
                                     </tr>
-
                                 </tbody>
                                 @endforeach
                             </table>

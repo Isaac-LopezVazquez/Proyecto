@@ -37,10 +37,10 @@ class ProvedorController extends Controller
         $request->validate([
             'nombreP' => 'required|min:5|max:255',
             'direccion' => 'required|min:4|max:255',
-            'telefono' => 'required|integer|max:15',
+            'telefono' => 'required|integer|max:9999999999',
         ]);
         
-        session()->flash('success', 'La prenda se ha creado exitosamente.');
+        session()->flash('success', 'El proveedor se ha registrado exitosamente.');
 
         Provedor::create($request->all()); //Ingresa los datos a las columnas que esten definidas en los FILLABLE
 
@@ -79,9 +79,9 @@ class ProvedorController extends Controller
         $request->validate([
             'nombreP' => 'required|min:5|max:255',
             'direccion' => 'required|min:4|max:255',
-            'telefono' => 'required|integer|max:15',
+            'telefono' => 'required|integer|max:9999999999',
         ]);
-        session()->flash('success', 'La prenda se ha actualizado exitosamente.');
+        session()->flash('success', 'El proveedor se ha actualizado exitosamente.');
 
         Provedor::where('id', $provedor->id)->update($request->except('_token', '_method'));
 

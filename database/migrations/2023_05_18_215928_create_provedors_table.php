@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombreP');
             $table->string('direccion');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->timestamps();
             $table->softDeletes();
         });
