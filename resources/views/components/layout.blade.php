@@ -44,10 +44,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
-                                    <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 dropdown-item">
-
-                                        <p class="mb-0 fs-3">Mi perfil</p>
-                                    </a>
+                                    
                                     <form method="POST" action="{{ route('logout') }}" x-data>
                                         @csrf
 
