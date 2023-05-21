@@ -29,9 +29,6 @@ Route::resource('provedor', ProvedorController::class)->middleware('auth');
 
 //Route::resource('prenda', PrendaController::class)->except(['destroy', 'index']); Crea una ruta para cada metodo y el except las evita  
 
-Route::get('/inicio', function () {
-    return view('inicio');
-})->name('inicio');
 
 Route::middleware([
     'auth:sanctum',
@@ -39,7 +36,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('inicio');
     })->name('dashboard')->middleware('auth');
 });
 Route::get('archivo/descarga/{archivo}',  //ruta archivo

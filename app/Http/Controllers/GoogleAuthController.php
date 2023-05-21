@@ -20,7 +20,7 @@ class GoogleAuthController extends Controller
         $user = Socialite::driver('google')->user();
         $this->_registerOrLoginUserGoogleUser($user);
 
-        return redirect()->route('inicio'); //gmail directo a inicio
+        return redirect()->route('dashboard'); //gmail directo a inicio
     }
 
     protected function _registerOrLoginUserGoogleUser($incomingUser)
