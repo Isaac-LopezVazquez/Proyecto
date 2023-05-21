@@ -24,9 +24,7 @@ class EmpleadoController extends Controller
     public function create()
     {
         //
-        if (! Gate::allows('admin-empleados')) { //gate
-            abort(403);
-        }
+       
         return view('empleado.create-empleado',);
     }
 

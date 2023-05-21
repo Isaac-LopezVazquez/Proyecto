@@ -98,7 +98,7 @@
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: '{{ session('prenda') == 'eliminado' ? 'La prenda ha sido eliminada.' : session('success') }}',
+            text: '{{ session('prenda') == 'eliminado' ? 'El proveedor ha sido eliminado.' : session('success') }}',
             timer: 3000 // Duración de la notificación en milisegundos (3 segundos en este caso)
         });
         @endif

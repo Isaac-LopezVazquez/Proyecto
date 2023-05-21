@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 
@@ -52,7 +53,9 @@ class ArchivoController extends Controller
      public function descargar(Archivo $archivo)
      {
         
-        Session::flash('descargar', 'El archivo se ha descargado correctamente.');
+        if (! Gate::allows('descargar-archivos')) { //gate para elimninar
+            abort(403);
+        }
 
          return Storage::download($archivo->hash, $archivo->nombre, 
                  ['Content-Type' => $archivo->mime]);
@@ -84,7 +87,9 @@ class ArchivoController extends Controller
      */
     public function destroy(Archivo $archivo)
     {
-       
+        if (! Gate::allows('eliminar-archivos')) { //gate para elimninar
+            abort(403);
+        }
 
 
         Storage::delete($archivo->hash);

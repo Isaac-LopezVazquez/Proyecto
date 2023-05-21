@@ -27,8 +27,16 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-		Gate::define('admin-empleados', function (User $user) {  //solo el id 1 puede agregar empleados
-			return $user->id === 1;
+		
+		Gate::define('eliminar-prendas', function (User $user) {  //solo el id 1 puede elimar prendas
+			return $user->id == 1;
+		});
+		
+		Gate::define('eliminar-archivos', function (User $user) {  //solo el id 1 puede elimar prendas
+			return $user->id == 1;
+		});
+		Gate::define('descargar-archivos', function (User $user) {  //solo el id 1 puede descargar archivos
+			return $user->id == 1;
 		});
 
         //

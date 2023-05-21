@@ -121,6 +121,10 @@ class PrendaController extends Controller
     public function destroy(Prenda $prenda)
     {
         //
+        
+        if (! Gate::allows('eliminar-prendas')) { //gate para elimninar
+            abort(403);
+        }
         $prenda->delete();
         return redirect()->route('prenda.index')->with('prenda', 'eliminado');
 

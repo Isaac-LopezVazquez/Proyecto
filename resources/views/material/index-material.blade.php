@@ -110,7 +110,7 @@
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: '{{ session('material') == 'eliminado' ? 'El empleado ha sido eliminado.' : session('success') }}',
+            text: '{{ session('material') == 'eliminado' ? 'El material ha sido eliminado.' : session('success') }}',
             timer: 3000
         });
     </script>
